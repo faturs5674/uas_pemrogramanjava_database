@@ -272,11 +272,10 @@ public class aplikasikasir extends javax.swing.JFrame {
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        
-    }     
+
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
-   
 
     public void selectByminuman(String minuman) throws SQLException {
         koneksi konek = new koneksi();
@@ -402,23 +401,19 @@ public class aplikasikasir extends javax.swing.JFrame {
 
         asterik += "\n";
 
-        if (stoklama == 0) {
-            ubah.update(Integer.parseInt(out_brg.getText()), 0);
-            JOptionPane.showMessageDialog(null, "Stok habis");
-        } else if(stoklama<Integer.parseInt(out_brg.getText())) {
-         JOptionPane.showMessageDialog(null, "stok tidak cukup");
-       
-        }
-        else if(stoklama>Integer.parseInt(out_brg.getText())){
+        if (stoklama < Integer.parseInt(out_brg.getText())) {
+            ubah.update(Integer.parseInt(out_brg.getText()), stoklama - totalbeli);
             JOptionPane.showMessageDialog(null, asterik, "total pembayaran",
-                JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.INFORMATION_MESSAGE);
         }
-        else{
-               ubah.update(Integer.parseInt(out_brg.getText()), stoklama - totalbeli);
-        }
-        table();
-    };
+  
 
+
+        table();
+    }
+
+    ;
+//
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         beli();
